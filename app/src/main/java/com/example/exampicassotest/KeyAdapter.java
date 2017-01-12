@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.exampicassotest.model.Letters;
+import com.example.exampicassotest.model.Keys;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,50 +16,50 @@ import java.util.List;
 /**
  * Created by meltemyildirim on 1/11/17.
  */
-public class LetterAdapter extends RecyclerView.Adapter<LetterViewHolder> {
-
+public class KeyAdapter extends RecyclerView.Adapter<KeyViewHolder> {
 
     private static final String IMAGE_URL = "Image_Url";
-    List<Letters> letterList;
+    List<Keys> letterList;
     Context context;
 
-    public LetterAdapter() {
+
+    public KeyAdapter() {
         this.letterList = new ArrayList<>();
     }
 
-    public LetterAdapter(List<Letters> letterList, Context context) {
+    public KeyAdapter(List<Keys> letterList, Context context) {
         this.letterList = letterList;
         this.context = context;
     }
 
 
     @Override
-    public LetterViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public KeyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         LayoutInflater inflater = LayoutInflater.from(context);
         View itemView = inflater.inflate(R.layout.item_layout, parent, false);
-        LetterViewHolder letterItem = new LetterViewHolder(itemView);
+        KeyViewHolder letterItem = new KeyViewHolder(itemView);
         return letterItem;
     }
 
     @Override
-    public void onBindViewHolder(LetterViewHolder holder, int position) {
+    public void onBindViewHolder(KeyViewHolder holder, int position) {
 
-        final Letters letters = letterList.get(position);
-        holder.setName(letters.getName());
-        holder.setDetailImage(letters.getUrl());
+        final Keys keys = letterList.get(position);
+        holder.setName(keys.getName());
+        holder.setDetailImage(keys.getUrl());
         holder.setOnclickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent letterIntent = new Intent(context, DetailActivity.class);
-                letterIntent.putExtra(IMAGE_URL, letters.getUrl());
+                letterIntent.putExtra(IMAGE_URL, keys.getUrl());
                 context.startActivity(letterIntent);
             }
         });
 
     }
 
-    public void setData(List<Letters> letterList) {
+    public void setData(List<Keys> letterList) {
         this.letterList = letterList;
         notifyDataSetChanged();
     }

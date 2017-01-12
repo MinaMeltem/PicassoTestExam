@@ -9,19 +9,19 @@ import java.util.List;
  * Created by meltemyildirim on 1/11/17.
  */
 
-public class AvailableKeysResponse {
+public class KeysResponse {
 
     private boolean success;
     @SerializedName("available keys")
     @Expose
-    private List<Letters> availableKeys;
+    private List<Keys> availableKeys;
 
 
-    public AvailableKeysResponse(List<Letters>availableKeys) {
+    public KeysResponse(List<Keys>availableKeys) {
         this.availableKeys = availableKeys;
     }
 
-    public AvailableKeysResponse(boolean success, List<Letters> availableKeys) {
+    public KeysResponse(boolean success, List<Keys> availableKeys) {
         this.success = success;
         this.availableKeys = availableKeys;
     }
@@ -32,7 +32,7 @@ public class AvailableKeysResponse {
         return success;
     }
 
-    public List<Letters> getAvailableKeys() {
+    public List<Keys> getAvailableKeys() {
         return availableKeys;
     }
 
@@ -42,7 +42,7 @@ public class AvailableKeysResponse {
         this.success = success;
     }
 
-    public void setAvailableKeys(List<Letters> availableKeys) {
+    public void setAvailableKeys(List<Keys> availableKeys) {
         this.availableKeys = availableKeys;
     }
 }

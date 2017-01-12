@@ -4,16 +4,16 @@ package com.example.exampicassotest.model;
  * Created by meltemyildirim on 1/11/17.
  */
 
-public class Letters {
+public class Keys {
 
     private String name;
     private String textColor;
     private String url;
 
-    public Letters() {
+    public Keys() {
     }
 
-    public Letters(String name, String textColor, String url) {
+    public Keys(String name, String textColor, String url) {
         this.name = name;
         this.textColor = textColor;
         this.url = url;
