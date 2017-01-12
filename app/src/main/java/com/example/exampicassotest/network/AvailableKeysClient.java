@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by meltemyildirim on 1/11/17.
  */
 
-public class LetterClient {
+public class AvailableKeysClient {
 
     public static final String BASE_URL = "http://jsjrobotics.nyc/";
 

@@ -6,9 +6,9 @@ import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
 import com.example.exampicassotest.model.Letters;
-import com.example.exampicassotest.model.LettersResponse;
-import com.example.exampicassotest.network.LetterApi;
-import com.example.exampicassotest.network.LetterClient;
+import com.example.exampicassotest.model.AvailableKeysResponse;
+import com.example.exampicassotest.network.AvailableKeysApi;
+import com.example.exampicassotest.network.AvailableKeysClient;
 
 import java.util.List;
 
@@ -30,20 +30,20 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         recyclerView.setAdapter(letterAdapter);
 
-        LetterApi api = LetterClient.createService(LetterApi.class);
-        Call<LettersResponse> call = api.getLettersResponse();
+        AvailableKeysApi api = AvailableKeysClient.createService(AvailableKeysApi.class);
+        Call<AvailableKeysResponse> call = api.getLettersResponse();
 
-        call.enqueue(new Callback<LettersResponse>() {
+        call.enqueue(new Callback<AvailableKeysResponse>() {
 
             @Override
-            public void onResponse(Call<LettersResponse> call, Response<LettersResponse> response) {
-                LettersResponse lResponse = response.body();
-                List<Letters> letterList = lResponse.getLetterList();
+            public void onResponse(Call<AvailableKeysResponse> call, Response<AvailableKeysResponse> response) {
+                AvailableKeysResponse lResponse = response.body();
+                List<Letters> letterList = lResponse.getAvailableKeys();
                 letterAdapter.setData(letterList);
             }
 
             @Override
-            public void onFailure(Call<LettersResponse> call, Throwable t) {
+            public void onFailure(Call<AvailableKeysResponse> call, Throwable t) {
                 Toast.makeText(MainActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
             }
         });
