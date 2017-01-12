@@ -18,8 +18,13 @@ public class LetterViewHolder extends RecyclerView.ViewHolder {
     public LetterViewHolder(View itemView) {
         super(itemView);
 
-        letterName = (TextView)itemView.findViewById(R.id.letters_name_tv);
-        detailImage = (ImageView)itemView.findViewById(R.id.detail_image_iv);
+        letterName = (TextView) itemView.findViewById(R.id.letters_name_tv);
+        detailImage = (ImageView) itemView.findViewById(R.id.detail_image_iv);
+
+    }
+
+    public void setOnclickListener(View.OnClickListener listener) {
+        letterName.setOnClickListener(listener);
 
     }
 
@@ -27,7 +32,8 @@ public class LetterViewHolder extends RecyclerView.ViewHolder {
         letterName.setText(name);
     }
 
-    public void setDetailImage(String url){
-        Picasso.with(detailImage.getContext()).load(url).into(detailImage);}
+    public void setDetailImage(String url) {
+        Picasso.with(detailImage.getContext()).load(url).into(detailImage);
+    }
 
 }

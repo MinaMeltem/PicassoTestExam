@@ -7,6 +7,7 @@ import java.util.List;
  */
 
 public class LettersResponse {
+
     private List<Letters> letterList;
 
 
@@ -16,5 +17,9 @@ public class LettersResponse {
 
     public List<Letters> getLetterList() {
         return letterList;
+    }
+
+    public void setLetterList(List<Letters> letterList) {
+        this.letterList = letterList;
     }
 }

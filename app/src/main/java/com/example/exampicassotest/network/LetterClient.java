@@ -14,6 +14,7 @@ public class LetterClient {
 
     private static OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
 
+
     private static Retrofit.Builder builder = new Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create());
 
     public static <S> S createService(Class<S> serviceClass) {
