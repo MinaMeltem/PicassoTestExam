@@ -4,16 +4,16 @@ package com.example.exampicassotest.model;
  * Created by meltemyildirim on 1/11/17.
  */
 
-public class Keys {
+public class KeyObj {
 
     private String name;
     private String textColor;
     private String url;
 
-    public Keys() {
+    public KeyObj() {
     }
 
-    public Keys(String name, String textColor, String url) {
+    public KeyObj(String name, String textColor, String url) {
         this.name = name;
         this.textColor = textColor;
         this.url = url;

@@ -1,6 +1,6 @@
 package com.example.exampicassotest.network;
 
-import com.example.exampicassotest.model.KeysResponse;
+import com.example.exampicassotest.model.KeyResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -9,7 +9,7 @@ import retrofit2.http.GET;
  * Created by meltemyildirim on 1/11/17.
  */
 
-public interface AvailableKeysApi {
+public interface KeyApi {
     @GET("cgi-bin/1_11_2017_exam.pl")
-    Call<KeysResponse> getKeysResponse();
+    Call<KeyResponse> getKeyResponse();
 }

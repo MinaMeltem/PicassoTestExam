@@ -1,72 +1,58 @@
 package com.example.exampicassotest;
 
-import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.exampicassotest.model.Keys;
+import com.example.exampicassotest.model.KeyObj;
 
 import java.util.ArrayList;
 import java.util.List;
 
-
 /**
- * Created by meltemyildirim on 1/11/17.
+ * Created by meltemyildirim on 1/13/17.
  */
-public class KeyAdapter extends RecyclerView.Adapter<KeyViewHolder> {
 
-    private static final String IMAGE_URL = "Image_Url";
-    List<Keys> letterList;
-    Context context;
+public class KeyAdapter extends RecyclerView.Adapter <KeyViewHolder> {
+
+    private List <KeyObj> keyObjList;
+    private KeyFragment keyFragment;
 
 
     public KeyAdapter() {
-        this.letterList = new ArrayList<>();
+        this.keyObjList = new ArrayList<>();
+
     }
 
-    public KeyAdapter(List<Keys> letterList, Context context) {
-        this.letterList = letterList;
-        this.context = context;
+    public KeyAdapter(List<KeyObj> keyObjList, KeyFragment keyFragment) {
+        this.keyObjList = new ArrayList<>();
+        this.keyFragment = keyFragment;
     }
-
 
     @Override
     public KeyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
-        LayoutInflater inflater = LayoutInflater.from(context);
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View itemView = inflater.inflate(R.layout.item_layout, parent, false);
-        KeyViewHolder letterItem = new KeyViewHolder(itemView);
-        return letterItem;
+        KeyViewHolder singleKeyView = new KeyViewHolder(itemView);
+
+        return singleKeyView;
     }
 
     @Override
     public void onBindViewHolder(KeyViewHolder holder, int position) {
-
-        final Keys keys = letterList.get(position);
-        holder.setName(keys.getName());
-        holder.setDetailImage(keys.getUrl());
-        holder.setOnclickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent letterIntent = new Intent(context, DetailActivity.class);
-                letterIntent.putExtra(IMAGE_URL, keys.getUrl());
-                context.startActivity(letterIntent);
-            }
-        });
+        KeyObj keyObj = keyObjList.get(position);
+        holder.bind(keyObj);
 
     }
 
-    public void setData(List<Keys> letterList) {
-        this.letterList = letterList;
+    public void setData(List <KeyObj> keyObjList){
+        this.keyObjList = keyObjList;
         notifyDataSetChanged();
     }
 
     @Override
     public int getItemCount() {
-        return letterList.size();
-
+        return keyObjList.size();
     }
 }

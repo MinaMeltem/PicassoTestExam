@@ -1,45 +1,38 @@
 package com.example.exampicassotest;
 
+
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
+import com.example.exampicassotest.model.KeyObj;
 
 /**
- * Created by meltemyildirim on 1/11/17.
+ * Created by meltemyildirim on 1/13/17.
  */
+
 public class KeyViewHolder extends RecyclerView.ViewHolder {
 
-    TextView letterName;
-    ImageView detailImage;
+    private TextView keyLetterTV;
 
     public KeyViewHolder(View itemView) {
         super(itemView);
-
-        letterName = (TextView) itemView.findViewById(R.id.letters_name_tv);
-        detailImage = (ImageView) itemView.findViewById(R.id.detail_image_iv);
-
+        keyLetterTV = (TextView) itemView.findViewById(R.id.letters_name_tv);
     }
 
-    public void setOnclickListener(View.OnClickListener listener) {
-        letterName.setOnClickListener(listener);
+    public void bind(final KeyObj letter) {
+        keyLetterTV.setText(letter.getName());
+        keyLetterTV.setTextColor(Color.parseColor(letter.getTextColor()));
 
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), ImageActivity.class);
+                intent.putExtra(ImageActivity.KEY_IMAGE_URL, letter.getUrl());
+                view.getContext().startActivity(intent);
+            }
+        });
     }
-
-    public void setName(String name) {
-        letterName.setText(name);
-    }
-
-    public void setDetailImage(String url) {
-        Picasso.with(detailImage.getContext()).load(url).into(detailImage);
-    }
-
-    public void SetTextColor(String color){
-        int letterColor = Color.parseColor(color);
-        letterName.setTextColor(letterColor);
-
-
-    }
+}
